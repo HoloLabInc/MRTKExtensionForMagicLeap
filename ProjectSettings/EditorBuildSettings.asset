@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/MixedRealityToolkit.ThirdParty/MagicLeapInput/Scenes/MagicLeapHandInputSample.unity
+    guid: 5d9e1fc43de22cc4c9743b72fde7aca2
+  m_configObjects:
+    com.unity.xr.magicleap.magic_leap_settings: {fileID: 11400000, guid: b78485aff1709fc4a8e6f4c12e3d3761,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 9feb16b9ca954584492945a930de87f5,
+      type: 2}
