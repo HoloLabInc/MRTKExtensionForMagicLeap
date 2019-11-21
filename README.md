@@ -65,6 +65,9 @@ Check the following capabilities.
 ## Example scene
 The example scenes are under `MixedRealityToolkit.ThirdParty/MagicLeapInput/Scenes`.
 
+# Known Issue
+Canvas UI does not work well.
+
 # Author
 Furuta, Yusuke ([@tarukosu](https://twitter.com/tarukosu))
 
