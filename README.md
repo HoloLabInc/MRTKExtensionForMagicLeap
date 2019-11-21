@@ -35,13 +35,20 @@ Download and import the latest MRTKExtensionForMagicLeap unitypackage.
 Import MagicLeap.unitypackage, which you can download with Magic Leap PackageManager.
 
 ## 3. Project setup
-Please follow the following documentations.
+### Basic setup
+Setup Unity project according to the following documentations.
 
 - https://creator.magicleap.com/learn/guides/get-started-developing-in-unity
 - https://creator.magicleap.com/learn/guides/unity-setup
 
+1. Open "Edit" > "Preferences" > "External Tools" and specify Lumin SDK version folder.
+1. Import the XR Management Package
+1. Specify Magic Leap Loader in "Project Settings" > "XR Plugin Management"
+1. Change Api Compatibility Level to .NET 4.x.
+
+
 ### Force multipass rendering
-Open "Project Settings" > "XR Plugin Management" > "Magic Leap Settings" and check "Fore Multipass".
+Open "Edit" > "Project Settings" > "XR Plugin Management" > "Magic Leap Settings" and check "Fore Multipass".
 
 ![image](https://user-images.githubusercontent.com/4415085/69318279-31daee00-0c80-11ea-8566-7611a6d371c5.png)
 
