@@ -55,6 +55,9 @@ Check the following capabilities.
 
 ![Capabilities](https://user-images.githubusercontent.com/4415085/69318178-f0e2d980-0c7f-11ea-9631-deafcf0d7792.png)
 
+## Example scene
+The example scenes are under `MixedRealityToolkit.ThirdParty/MagicLeapInput/Scenes`.
+
 # Author
 Furuta, Yusuke ([@tarukosu](https://twitter.com/tarukosu))
 
