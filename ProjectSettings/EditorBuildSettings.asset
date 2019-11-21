@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/MixedRealityToolkit.ThirdParty/MagicLeapInput/Scenes/MagicLeapHandInputSample.unity
     guid: 5d9e1fc43de22cc4c9743b72fde7aca2
   m_configObjects:
-    com.unity.xr.magicleap.magic_leap_settings: {fileID: 11400000, guid: b78485aff1709fc4a8e6f4c12e3d3761,
+    com.unity.xr.magicleap.magic_leap_settings: {fileID: 11400000, guid: a326cfd144318d54e8b5673db898a8e1,
       type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 9feb16b9ca954584492945a930de87f5,
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1750238ff7f15c943b1c59fdb1de9cd9,
       type: 2}

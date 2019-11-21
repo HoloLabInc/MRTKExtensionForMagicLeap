@@ -91,7 +91,8 @@ MonoBehaviour:
     runtimePlatform: -1
     deviceManagerProfile: {fileID: 0}
   - componentType:
-      reference: HoloLab.Toolkit.Modules.MagicLeapMrtk.MagicLeapDeviceManager, HoloLab.Toolkit.Modules.MagicLeapMrtk
+      reference: HoloLab.MixedReality.Toolkit.MagicLeapInput.MagicLeapDeviceManager,
+        HoloLab.MixedReality.Toolkit.MagicLeapInput
     componentName: Magic Leap Device Manager
     priority: 0
     runtimePlatform: 1232

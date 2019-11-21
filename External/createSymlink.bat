@@ -22,3 +22,5 @@ if defined f (
   set /A i+=1
   goto :BEGIN
 )
+
+pause
