@@ -43,7 +43,7 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
             if (!mlInputStarted)
             {
                 StartMLInput();
-                //mlInputStarted = true;
+                mlInputStarted = true;
             }
 
             foreach (var mlInputController in mlInputControllers)
@@ -111,32 +111,16 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
                     //in that case the callback is never called.
                     //try to find connected controllers.
 
-                    var con = MLInput.GetController(MLInput.Hand.Right);
+                    var controller = MLInput.GetController(MLInput.Hand.Right) ?? MLInput.GetController(MLInput.Hand.Left);
 
-                    if (con != null)
+                    if (controller != null)
                     {
-                        Debug.Log("Find Controller:Right");
-                        HandleOnControllerConnected(con.Id);
-                    }
-                    else
-                    {
-                        con = MLInput.GetController(MLInput.Hand.Left);
-                        if (con != null)
-                        {
-                            Debug.Log("Find Controller:Left");
-                            HandleOnControllerConnected(con.Id);
-                        }
-
+                        HandleOnControllerConnected(controller.Id);
                     }
 
-                    mlInputStarted = true;
                 }
             }
 
-            MLInput.OnControllerConnected += HandleOnControllerConnected;
-            MLInput.OnControllerDisconnected += HandleOnControllerDisconnected;
-            MLInput.OnControllerButtonUp += HandleOnButtonUp;
-            MLInput.OnControllerButtonDown += HandleOnButtonDown;
         }
 
         private void StopMLInput()
