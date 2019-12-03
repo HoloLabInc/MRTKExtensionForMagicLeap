@@ -101,11 +101,6 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
                 }
                 else
                 {
-                    MLInput.OnControllerConnected += HandleOnControllerConnected;
-                    MLInput.OnControllerDisconnected += HandleOnControllerDisconnected;
-                    MLInput.OnControllerButtonUp += HandleOnButtonUp;
-                    MLInput.OnControllerButtonDown += HandleOnButtonDown;
-
                     // When using SDK 0.21.0+Unity2019.1.x
                     // controllers might be already connected at this frame.
                     // In that case the callback is never called.
@@ -120,6 +115,10 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
                 }
             }
 
+            MLInput.OnControllerConnected += HandleOnControllerConnected;
+            MLInput.OnControllerDisconnected += HandleOnControllerDisconnected;
+            MLInput.OnControllerButtonUp += HandleOnButtonUp;
+            MLInput.OnControllerButtonDown += HandleOnButtonDown;
         }
 
         private void StopMLInput()
