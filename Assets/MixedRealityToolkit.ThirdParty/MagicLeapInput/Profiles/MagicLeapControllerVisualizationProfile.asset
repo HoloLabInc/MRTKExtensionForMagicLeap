@@ -49,21 +49,23 @@ MonoBehaviour:
         Microsoft.MixedReality.Toolkit.SDK
   - description: Magic Leap Controller
     controllerType:
-      reference: HoloLab.Toolkit.Modules.MagicLeapMrtk.MagicLeapController, HoloLab.Toolkit.Modules.MagicLeapMrtk
+      reference: HoloLab.MixedReality.Toolkit.MagicLeapInput.MagicLeapController,
+        HoloLab.MixedReality.Toolkit.MagicLeapInput
     handedness: 1
     useDefaultModel: 0
     overrideModel: {fileID: 1463616170062846, guid: bda8dcd918f4a3e4484dbe6a78367c38,
       type: 3}
     controllerVisualizationType:
-      reference: Microsoft.MixedReality.Toolkit.Input.MagicLeapMixedRealityControllerVisualizer,
-        HoloLab.Toolkit.Modules.MagicLeapMrtk
+      reference: HoloLab.MixedReality.Toolkit.MagicLeapInput.MagicLeapMixedRealityControllerVisualizer,
+        HoloLab.MixedReality.Toolkit.MagicLeapInput
   - description: Magic Leap Controller
     controllerType:
-      reference: HoloLab.Toolkit.Modules.MagicLeapMrtk.MagicLeapController, HoloLab.Toolkit.Modules.MagicLeapMrtk
+      reference: HoloLab.MixedReality.Toolkit.MagicLeapInput.MagicLeapController,
+        HoloLab.MixedReality.Toolkit.MagicLeapInput
     handedness: 2
     useDefaultModel: 0
     overrideModel: {fileID: 1463616170062846, guid: bda8dcd918f4a3e4484dbe6a78367c38,
       type: 3}
     controllerVisualizationType:
-      reference: Microsoft.MixedReality.Toolkit.Input.MagicLeapMixedRealityControllerVisualizer,
-        HoloLab.Toolkit.Modules.MagicLeapMrtk
+      reference: HoloLab.MixedReality.Toolkit.MagicLeapInput.MagicLeapMixedRealityControllerVisualizer,
+        HoloLab.MixedReality.Toolkit.MagicLeapInput
