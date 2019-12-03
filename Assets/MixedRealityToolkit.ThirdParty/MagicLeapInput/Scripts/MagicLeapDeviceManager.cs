@@ -106,10 +106,10 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
                     MLInput.OnControllerButtonUp += HandleOnButtonUp;
                     MLInput.OnControllerButtonDown += HandleOnButtonDown;
 
-                    //when using SDK 0.21.0+Unity2019.1.x
-                    //Controller might be already connected at this frame.
-                    //in that case the callback is never called.
-                    //try to find connected controllers.
+                    // When using SDK 0.21.0+Unity2019.1.x
+                    // controllers might be already connected at this frame.
+                    // In that case the callback is never called.
+                    // That's why try to find connected controllers.
 
                     var controller = MLInput.GetController(MLInput.Hand.Right) ?? MLInput.GetController(MLInput.Hand.Left);
 
@@ -117,7 +117,6 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
                     {
                         HandleOnControllerConnected(controller.Id);
                     }
-
                 }
             }
 
