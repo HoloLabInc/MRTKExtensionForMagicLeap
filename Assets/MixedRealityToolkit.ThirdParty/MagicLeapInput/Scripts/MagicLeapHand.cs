@@ -206,7 +206,8 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
             var wrist = hand.Wrist;
             ConvertMagicLeapKeyPoint(wrist.Center, TrackedHandJoint.Wrist);
 
-            UpdateJointPose(TrackedHandJoint.Palm, hand.Center, Quaternion.identity);
+            CurrentControllerRotation = UpdateHandRotation(hand);
+            UpdateJointPose(TrackedHandJoint.Palm, hand.Center, CurrentControllerRotation);
 
             CoreServices.InputSystem?.RaiseHandJointsUpdated(InputSource, ControllerHandedness, jointPoses);
 
@@ -261,6 +262,34 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
                 // Raise input system Event if it enabled
                 InputSystem?.RaisePoseInputChanged(InputSource, ControllerHandedness, interactionMapping.MixedRealityInputAction, currentIndexPose);
             }
+        }
+
+        private Quaternion prevRotation = Quaternion.identity;
+        private Quaternion UpdateHandRotation(MLHand hand)
+        {
+            //@see keypoint reference on Magic Leap Hand tracking
+            //https://creator.magicleap.com/learn/guides/lumin-sdk-handtracking
+
+            var keypoint1 = hand.Middle.MCP;//forward
+            var keypoint2 = hand.Thumb.MCP;//horizontal
+
+            var rotation = prevRotation;
+
+            if (keypoint1.IsValid && keypoint2.IsValid)
+            {
+                var forwardVec = keypoint1.Position - hand.Center;
+                var cross = keypoint2.Position - hand.Center;
+                var upVec = Vector3.Cross(forwardVec, cross);
+
+                if (upVec == Vector3.zero || forwardVec == Vector3.zero)
+                    return rotation;
+
+                rotation = Quaternion.LookRotation(forwardVec, -upVec);
+
+                prevRotation = rotation;
+            }
+
+            return rotation;
         }
     }
 }
