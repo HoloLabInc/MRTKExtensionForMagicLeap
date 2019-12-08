@@ -90,7 +90,7 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
             lastGripPose = currentGripPose;
 
             Vector3 pointerPosition = jointPoses[TrackedHandJoint.Palm].Position;
-            IsPositionAvailable = IsRotationAvailable = pointerPosition != Vector3.zero;
+            IsPositionAvailable = IsRotationAvailable = IsAccurateHandPositon(hand);
 
             if (IsPositionAvailable)
             {
@@ -215,7 +215,7 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
             var keyPose = hand.KeyPose;
             var confidence = hand.KeyPoseConfidence;
 
-            if (confidence > KeyPoseConfidenceThreshold && (keyPose == MLHandKeyPose.Pinch || keyPose == MLHandKeyPose.Fist))
+            if (confidence > KeyPoseConfidenceThreshold && (keyPose == MLHandKeyPose.Pinch || keyPose == MLHandKeyPose.Fist || keyPose == MLHandKeyPose.Ok))
             {
                 IsPinching = true;
             }
@@ -270,7 +270,7 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
             //@see keypoint reference on Magic Leap Hand tracking
             //https://creator.magicleap.com/learn/guides/lumin-sdk-handtracking
 
-            var keypoint1 = hand.Middle.MCP;//forward
+            var keypoint1 = hand.Index.MCP;//forward
             var keypoint2 = hand.Thumb.MCP;//horizontal
 
             var rotation = prevRotation;
@@ -290,6 +290,29 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
             }
 
             return rotation;
+        }
+
+        private bool IsAccurateHandPositon(MLHand hand)
+        {
+            //Check hand position is correct or not,
+            //Sometimes we get bogus hand position on 0.22.0.
+            //
+            //Thanks to Javier
+            //@see https://forum.magicleap.com/hc/en-us/community/posts/360055319592/comments/360008480752
+
+            Vector3 centerPos = hand.Center;
+
+            //BUG; sometimes we get this bogus position, magic leap bug
+            if (Mathf.Approximately(centerPos.x, 0) || Mathf.Approximately(centerPos.z, 0))
+                return false;
+
+            //BUG: sometimes the hand position is the camera!, another ML bug
+            Vector3 deltaToCam = (centerPos - CameraCache.Main.transform.position);
+            if (deltaToCam.sqrMagnitude < 0.09f)
+                return false;
+
+            return true;
+
         }
     }
 }
