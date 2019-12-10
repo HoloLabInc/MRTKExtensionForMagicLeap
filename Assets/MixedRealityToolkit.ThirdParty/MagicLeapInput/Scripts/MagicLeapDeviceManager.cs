@@ -99,6 +99,20 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
                     Debug.LogErrorFormat("Error: ControllerConnectionHandler failed starting MLInput, disabling script. Reason: {0}", result);
                     return;
                 }
+                else
+                {
+                    // When using SDK 0.21.0+Unity2019.1.x
+                    // controllers might be already connected at this frame.
+                    // In that case the callback is never called.
+                    // That's why try to find connected controllers.
+
+                    var controller = MLInput.GetController(MLInput.Hand.Right) ?? MLInput.GetController(MLInput.Hand.Left);
+
+                    if (controller != null)
+                    {
+                        HandleOnControllerConnected(controller.Id);
+                    }
+                }
             }
 
             MLInput.OnControllerConnected += HandleOnControllerConnected;
