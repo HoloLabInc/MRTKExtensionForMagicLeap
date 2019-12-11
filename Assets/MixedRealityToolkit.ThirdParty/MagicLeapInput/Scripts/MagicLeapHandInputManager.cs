@@ -93,13 +93,13 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
 
         private void StopMLInput()
         {
-            if (MLInput.IsStarted)
+            if (MLHands.IsStarted)
             {
                 // Stop KeyPose detection
                 var keyPoseTypes = Enum.GetValues(typeof(MLHandKeyPose)).Cast<MLHandKeyPose>().ToArray();
                 MLHands.KeyPoseManager.EnableKeyPoses(keyPoseTypes, false, true);
 
-                MLInput.Stop();
+                MLHands.Stop();
             }
         }
 
