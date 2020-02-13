@@ -51,7 +51,7 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
                 CurrentControllerPose.Position = CurrentControllerPosition;
                 CurrentControllerPose.Rotation = CurrentControllerRotation;
 
-                InputSystem?.RaiseSourcePoseChanged(InputSource, this, CurrentControllerPose);
+                CoreServices.InputSystem?.RaiseSourcePoseChanged(InputSource, this, CurrentControllerPose);
 
 
                 var interactionMapping = Interactions[0];
@@ -59,7 +59,7 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
                 if (interactionMapping.Changed)
                 {
                     // Raise input system Event if it enabled
-                    InputSystem?.RaisePoseInputChanged(InputSource, ControllerHandedness, interactionMapping.MixedRealityInputAction, interactionMapping.PoseData);
+                    CoreServices.InputSystem?.RaisePoseInputChanged(InputSource, ControllerHandedness, interactionMapping.MixedRealityInputAction, interactionMapping.PoseData);
                 }
 
                 // Fire Select event
@@ -85,12 +85,12 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
 
         private void RaiseOnSelectDown()
         {
-            InputSystem?.RaiseOnInputDown(InputSource, ControllerHandedness, Interactions[1].MixedRealityInputAction);
+            CoreServices.InputSystem?.RaiseOnInputDown(InputSource, ControllerHandedness, Interactions[1].MixedRealityInputAction);
         }
 
         private void RaiseOnSelectUp()
         {
-            InputSystem?.RaiseOnInputUp(InputSource, ControllerHandedness, Interactions[1].MixedRealityInputAction);
+            CoreServices.InputSystem?.RaiseOnInputUp(InputSource, ControllerHandedness, Interactions[1].MixedRealityInputAction);
         }
 
 
