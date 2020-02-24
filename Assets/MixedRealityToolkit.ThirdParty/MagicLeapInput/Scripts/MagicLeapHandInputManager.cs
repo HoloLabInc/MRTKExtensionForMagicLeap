@@ -34,11 +34,10 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
         /// <param name="priority">Service priority. Used to determine order of instantiation.</param>
         /// <param name="profile">The service's configuration profile.</param>
         public MagicLeapHandInputManager(
-            IMixedRealityServiceRegistrar registrar,
             IMixedRealityInputSystem inputSystem,
             string name = null,
             uint priority = DefaultPriority,
-            BaseMixedRealityProfile profile = null) : base(registrar, inputSystem, name, priority, profile) {
+            BaseMixedRealityProfile profile = null) : base(inputSystem, name, priority, profile) {
         }
 
         public override void Disable()
@@ -142,17 +141,17 @@ namespace HoloLab.MixedReality.Toolkit.MagicLeapInput
             // Add new hand
             var pointers = RequestPointers(SupportedControllerType.ArticulatedHand, handedness);
             var inputSourceType = InputSourceType.Hand;
-            var inputSource = InputSystem?.RequestNewGenericInputSource($"Magic Leap {handedness} Hand", pointers, inputSourceType);
+            var inputSource = CoreServices.InputSystem?.RequestNewGenericInputSource($"Magic Leap {handedness} Hand", pointers, inputSourceType);
 
             var controller = new MagicLeapHand(TrackingState.Tracked, handedness, inputSource);
-            controller.SetupConfiguration(typeof(MagicLeapHand), inputSourceType);
+            controller.SetupConfiguration(typeof(MagicLeapHand));
 
             for (int i = 0; i < controller.InputSource?.Pointers?.Length; i++)
             {
                 controller.InputSource.Pointers[i].Controller = controller;
             }
 
-            InputSystem?.RaiseSourceDetected(controller.InputSource, controller);
+            CoreServices.InputSystem?.RaiseSourceDetected(controller.InputSource, controller);
 
             trackedHands.Add(handedness, controller);
 
