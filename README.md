@@ -7,7 +7,7 @@ This is Mixed Reality Toolkit (MRTK) extension for Magic Leap.
 # Prerequisites
 - Unity 2019.2.x or higher
 - Magic Leap One
-- Magic Leap Unity Package 0.22.0
+- Magic Leap Unity Package 0.2.0
 
 # Getting Started
 
